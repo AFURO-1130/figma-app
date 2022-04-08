@@ -1,7 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import firebase from './Firebase';
+import logo from './logo.svg';
+function push() {
+  firebase.firestore().collection("hoge").doc("kinjyo").set({
+    name: "金城だよ"
+})
+.then(() => {
+    console.log("Document successfully written!");
+})
+.catch((error: any) => {
+    console.error("Error writing document: ", error);
+});
+}
+function hoge() {
+    console.log('hoge')
+  }
 function App() {
   return (
     <div className="App">
@@ -10,7 +24,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-       <p>hoge</p>
+       <button onClick={push}>hoge</button>
       </header>
     </div>
   );
